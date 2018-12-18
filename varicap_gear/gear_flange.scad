@@ -11,44 +11,53 @@ difference (){
 
 module Snap_a ()
 {
-translate([24, 0, 13.5])
-cube([4, 10, 27], center=true);
-translate([20, 0, 25.5])
-cube([4, 10, 3], center=true);
-translate([-24, 0, 13.5])
-cube([4, 10, 27], center=true);
-translate([-20, 0, 25.5])
-cube([4, 10, 3], center=true);
+translate([22.75, 0, 8.5])
+cube([1.5, 10, 17], center=true);
+translate([20, 0, 16.0])
+cube([4, 10, 2], center=true);
+translate([-22.75, 0, 8.5])
+cube([1.5, 10, 17], center=true);
+translate([-20, 0, 16.0])
+cube([4, 10, 2], center=true);
 }
 
 module Snap () {
 difference() {
 Snap_a();
-translate([0, 0, 24])
-cylinder($fn=120, 3, 21.5, 22);
+translate([0, 0, 14])
+cylinder($fn=120, 3, 21.75, 22);
 }
 }
 
-module Base ()
-{
-translate([0,0, 20])
-{
+module Crown (){
     cylinder($fn=120, 3, 19, 19);
     for (a =[0:6:359])
         translate([19 * sin(a), 19 * cos(a), 0])
             cylinder($fn=10, 3, .9, .9);
 }
 
-cylinder($fn=120, 20, 24, 24);
-translate([0, 5.5, 5])
-cube([70, 59, 10], center=true);
+module Base ()
+{
+translate([0, 5.5, 5]) cube([70, 59, 10], center=true);
 
-Snap();
+translate([0, 0, 10]) cylinder($fn=120, 10, 24, 24);
+// translate([0, 0, 10]) Snap();
+translate([0,0, 20]) Crown();
 
 translate([30, 30, 15])
   Feet();
 translate([-30, 30, 15])
   Feet();
+}
+
+module Edge_Rounding () {
+   difference() {
+   translate([0, 0,  5]) cube([20, 20, 10], center=true);
+   translate([10, 10, 0]) cylinder($fn=32, 10, 10, 10);
+   translate([-10, 10, 0]) cylinder($fn=32, 10, 10, 10);
+   translate([-10, -10, 0]) cylinder($fn=32, 10, 10, 10);
+   translate([10, -10, 0]) cylinder($fn=32, 10, 10, 10);
+   }
 }
 
 difference () {
@@ -59,6 +68,12 @@ difference () {
     translate([-31, 4, 0])
        cylinder($fn=16, 10, 2, 2);
     translate([0, 0, 15])
-    rotate ([90, 0, 0])
-    cylinder($fn=32, 24, 5, 5);
+      rotate ([90, 0, 0])
+        cylinder($fn=32, 24, 5, 5);
+    translate([0, -24,  20])
+       cube([10, 24, 10], center=true);
+    translate([0, 29.5, 5])
+      cube([50, 11, 10], center=true);
+    translate([35, -24, 0]) Edge_Rounding();
+    translate([-35, -24, 0]) Edge_Rounding();
 }
