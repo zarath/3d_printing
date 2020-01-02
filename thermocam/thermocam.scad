@@ -1,3 +1,4 @@
+use<threads.scad>
 $fn= 16;
 
 module main_box() {
@@ -64,13 +65,14 @@ module bottom_plate(){
         union(){
             translate([1,-2,1])cube([28,4,21]);
             translate([0,-2,0])cube([30,2,25]);
+            translate([15,-2,8])rotate([270,0,0])cylinder($fn=32, h=6, r1=6, r2=4);
             translate([2,0,20])cube([26,2,5]);
         };
         translate([0,1,22])cube([30,2,2]);
 
         // cable hole
-        translate([10,-3,15.5])cube([10, 6, 4.4]);
-        translate([6.8,-3,19.5])cube([16.4,6,0.4]);
+        translate([10,-3,15.5])cube([10, 8, 4.4]);
+        translate([6.8,-3,19.5])cube([16.4, 8,0.4]);
 
         // screw and nut holes
         translate([4,-3,11.5])rotate([270,0,0])cylinder(h=6, r=1.3);
@@ -78,16 +80,24 @@ module bottom_plate(){
 
         translate([26,-3,11.5])rotate([270,0,0])cylinder(h=6, r=1.3);
         translate([26,-3,11.5])rotate([270,0,0])cylinder(h=3, r=2.3);
+       
+        // thread
+        translate([15,-3,8])rotate([270,0,0])english_thread(diameter=1/4, threads_per_inch=20, length=5/16);
+
     };
 };
 
 module front_plate(){
     difference(){
-        cube([28,42,2]);
-        translate([14,20,-1])cylinder($fn=32, h=4, r1=1.5, r2=5.5);
-        translate([14,34,-1])cylinder($fn=32, h=4, r1=4.0, r2=8.0);
+        union(){
+            cube([27.8,41.8,1.9]);
+            translate([1.1,1.1,0])cube([25.6,39.6,3]);
+        }
+        translate([13.9,19.9,-1])cylinder($fn=32, h=4.1, r1=1.5, r2=5.5);
+        translate([13.9,33.9,-1])cylinder($fn=32, h=4.1, r1=3.5, r2=7.0);
     };
 };
+
 
 main_box();
 
