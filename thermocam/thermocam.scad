@@ -93,8 +93,8 @@ module front_plate(){
             cube([27.8,41.8,1.7]);
             translate([1.1,1.1,0])cube([25.6,39.6,3]);
         }
-        translate([13.9,21,-1])cylinder($fn=32, h=4.1, r1=1.5, r2=5.5);
-        translate([13.9,34.7,-1])cylinder($fn=32, h=4.1, r1=3.5, r2=7.0);
+        translate([13.9,20.7,-1])cylinder($fn=32, h=4.1, r1=1.5, r2=5.5);
+        translate([13.9,34.8,-1])cylinder($fn=32, h=4.1, r1=3.5, r2=7.0);
     };
 };
 
