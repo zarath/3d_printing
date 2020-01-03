@@ -12,7 +12,7 @@ module main_box() {
         translate([7,-2,4])cube([16,44,24]);
         translate([7,-2,4])cube([16,44,24]);
         translate([5.2,-2,4])cube([19.6,44,2]);
-        translate([2.3,-2,16])cube([25.4,44,1.2]);
+        translate([2.3,-2,16])cube([25.4,32.75,1.2]);
         translate([3.9,-2,17.2])cube([22.2,44,6]);
         translate([2,-2,19.2])cube([26,44,6]);
 
@@ -101,6 +101,6 @@ module front_plate(){
 
 main_box();
 
-translate([0, -3, 0])bottom_plate();
+//translate([0, -3, 0])bottom_plate();
 
-translate([1, 1, 26])front_plate();
+//translate([1, 1, 26])front_plate();
