@@ -90,17 +90,17 @@ module bottom_plate(){
 module front_plate(){
     difference(){
         union(){
-            cube([27.8,41.8,1.9]);
+            cube([27.8,41.8,1.7]);
             translate([1.1,1.1,0])cube([25.6,39.6,3]);
         }
-        translate([13.9,19.9,-1])cylinder($fn=32, h=4.1, r1=1.5, r2=5.5);
-        translate([13.9,33.9,-1])cylinder($fn=32, h=4.1, r1=3.5, r2=7.0);
+        translate([13.9,21,-1])cylinder($fn=32, h=4.1, r1=1.5, r2=5.5);
+        translate([13.9,34.7,-1])cylinder($fn=32, h=4.1, r1=3.5, r2=7.0);
     };
 };
 
 
-main_box();
+//main_box();
 
 //translate([0, -3, 0])bottom_plate();
 
-//translate([1, 1, 26])front_plate();
+translate([1, 1, 26])front_plate();
