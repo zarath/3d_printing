@@ -72,7 +72,7 @@ module bottom_plate(){
 
         // cable hole
         translate([10,-3,15.5])cube([10, 8, 4.4]);
-        translate([6.8,-3,19.5])cube([16.4, 8,0.4]);
+        translate([3.8,-3,19.5])cube([22.4, 8,0.4]);
 
         // screw and nut holes
         translate([4,-3,11.5])rotate([270,0,0])cylinder(h=6, r=1.3);
@@ -82,8 +82,9 @@ module bottom_plate(){
         translate([26,-3,11.5])rotate([270,0,0])cylinder(h=3, r=2.3);
        
         // thread
-        translate([15,-3,8])rotate([270,0,0])english_thread(diameter=1/4, threads_per_inch=20, length=5/16);
-
+        //translate([15,-3,8])rotate([270,0,0])english_thread(diameter=1/4, threads_per_inch=20, length=5/16);
+        translate([15,-3,8])rotate([270,0,0])cylinder(h=8, r=1.6);
+        translate([15,1,8])rotate([270,0,0])cylinder($fn=6, h=6, r=3.3);
     };
 };
 
@@ -99,8 +100,8 @@ module front_plate(){
 };
 
 
-//main_box();
+main_box();
 
-//translate([0, -3, 0])bottom_plate();
+translate([0, -3, 0])bottom_plate();
 
 translate([1, 1, 26])front_plate();
