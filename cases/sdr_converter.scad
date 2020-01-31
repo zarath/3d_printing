@@ -1,6 +1,18 @@
 use<roundedcube.scad>
 $fn= 16;
 
+module snap() {
+    translate([0, 6, 0]) {
+        rotate([0,90,270]) linear_extrude(height=6) {
+            polygon(
+                points=[[0, 0], [0, 2], [5, 0.2], [5, 0], [4.2, -0.3], [4.2, 0]],
+                paths=[[0, 1, 2, 3, 4, 5]]
+            );
+        };
+    };
+};
+
+
 module case_bottom() {
     difference() {
         // case size
@@ -49,7 +61,7 @@ module case_top() {
         roundedcube([34, 54, 4]);
 
         // cutout
-        translate([1.8, 1.8, 0])cube([30.4, 50.4, 2]);
+        translate([1.7, 1.7, 0])cube([30.6, 50.6, 2]);
 
         // edge
         translate([1, 1, -1])cube([2, 52, 2]);
@@ -66,30 +78,24 @@ module case_top() {
         translate([11, 49 , -4])cube([12, 19, 5]);
 
         // led
-        translate([11, 3 , 3])cube([2, 2, 4]);
-        translate([23, 3 , 3])cube([2, 2, 4]);
+        translate([10.4, 3 , 1])cube([2, 2, 4]);
+        translate([21.6, 3 , 1])cube([2, 2, 4]);
 
         // button
-        translate([15, 20 , 1.75])cube([15, 6, 2]);
-        translate([17, 20 , 1.75])cube([13, 0.5, 3]);
-        translate([17, 25.5 , 1.75])cube([13, 0.5, 3]);
-        translate([29.5, 20 , 1.75])cube([0.5, 6, 3]);
+        translate([15, 19 , 1.2])cube([15, 6, 2]);
+        translate([17, 19 , 1.5])cube([13, 0.5, 3]);
+        translate([17, 24.5 , 1.5])cube([13, 0.5, 3]);
+        translate([29.5, 19 , 1.5])cube([0.5, 6, 3]);
 
     };
         // button
-        translate([6, 22 , 1])cube([2, 2, 2]);
-        translate([26, 22 , 1])cube([2, 2, 2]);
+        translate([26, 21 , 1])cube([2, 2, 2]);
 
     // snap
-        translate([2, 5,-2.5])cube([2, 6, 6]);
-        translate([2.4, 8,-1.5])sphere(1.1);
-        translate([2, 41, -2.5])cube([2, 6, 6]);
-        translate([2.4, 44,-1.5])sphere(1.1);
-        translate([30, 5, -2.5])cube([2, 6, 6]);
-        translate([31.4, 8,-1.5])sphere(1.1);
-        translate([30, 41, -2.5])cube([2, 6, 6]);
-        translate([31.4, 44,-1.5])sphere(1.1);
-
+        translate([2, 5, 3.5]) snap();
+        translate([2, 41, 3.5]) snap();
+        translate([32, 11, 3.5]) rotate([0, 0, 180])snap();
+        translate([32, 47, 3.5]) rotate([0, 0, 180])snap();
 };
 
 //translate([0, 0, 0])case_bottom();
