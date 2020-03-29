@@ -98,6 +98,6 @@ module case_top() {
         translate([32, 47, 3.5]) rotate([0, 0, 180])snap();
 };
 
-//translate([0, 0, 0])case_bottom();
+// translate([0, 0, 0])case_bottom();
 translate([0, 0, 15])case_top();
 
