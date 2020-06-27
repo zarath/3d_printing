@@ -1,0 +1,1 @@
+NanoVNA V2 case by corecode on Thingiverse: https://www.thingiverse.com/thing:4285813
