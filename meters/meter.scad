@@ -25,11 +25,15 @@ module base() {
     };
 };
 
-// difference() {
-//     base();
-//     translate([7.25, 9.5, -3]) cube([45.5, 26, 8]);
-//     translate([6, 8, 1.5]) cube([48, 29, 8]);
-//     translate([18.5, 8.5, -3]) cube([23, 28, 8]);
-// }
+//
+// main
+//
 
-base ();
+difference() {
+    base();
+    translate([7.25, 9.5, -3]) cube([45.5, 26, 8]);
+    translate([6, 8, 1.5]) cube([48, 29, 8]);
+    translate([18.5, 8.5, -3]) cube([23, 28, 8]);
+}
+
+// base ();
