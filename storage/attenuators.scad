@@ -5,9 +5,9 @@ echo(version=version());
 font = "Liberation Sans";
 
 cube_size = 60;
-letter_size = 3.5;
+letter_size = 4.5;
 letter_height = 1;
-nut_radius = 4.6;
+nut_radius = 4.65;
 
 o = cube_size / 2 - letter_height / 2;
 
@@ -22,16 +22,16 @@ module letter(l) {
 
 difference() {
 	union() {
-		color("gray") cube([64, 46, 10], center = true);
-		translate([-15, -10, 5]) letter("3");
-		translate([-5, -10, 5]) letter("6");
-		translate([5, -10, 5]) letter("10");
-		translate([15, -10, 5]) letter("20");
-		translate([25, -10, 5]) letter("30");
+		color("gray") cube([62, 44, 10], center = true);
+		translate([-15, -9, 5]) letter("3");
+		translate([-5, -9, 5]) letter("6");
+		translate([5, -9, 5]) letter("10");
+		translate([15, -9, 5]) letter("20");
+		translate([25, -9, 5]) letter("30");
 
-		translate([5, 12, 3]) cylinder(r=2.75, h=10, center=true, $fn=16);
-		translate([15, 12, 3]) cylinder(r=2.75, h=10, center=true, $fn=16);
-		translate([25, 12, 3]) cylinder(r=2.75, h=10, center=true, $fn=16);
+		translate([5, 13, 3]) cylinder(r=2.75, h=10, center=true, $fn=16);
+		translate([15, 13, 3]) cylinder(r=2.75, h=10, center=true, $fn=16);
+		translate([25, 13, 3]) cylinder(r=2.75, h=10, center=true, $fn=16);
 	}
 
 	translate([-25, -17, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
@@ -41,21 +41,21 @@ difference() {
 	translate([15, -17, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
 	translate([25, -17, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
 
-	translate([-25, -3, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
-	translate([-15, -3, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
-	translate([-5, -3, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
-	translate([5, -3, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
-	translate([15, -3, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
-	translate([25, -3, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
+	translate([-25, -1, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
+	translate([-15, -1, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
+	translate([-5, -1, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
+	translate([5, -1, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
+	translate([15, -1, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
+	translate([25, -1, 2]) cylinder(r=nut_radius, h=10, center=true, $fn=6);
 
-	translate([-25, 12, 2]) cylinder(r=3.25, h=10, center=true, $fn=16);
-	translate([-15, 12, 2]) cylinder(r=3.25, h=10, center=true, $fn=16);
-	translate([-5, 12, 2]) cylinder(r=3.25, h=10, center=true, $fn=16);
-	translate([-25, 12, 2]) cylinder(r=3.25, h=10, center=true, $fn=16);
+	translate([-25, 13, 2]) cylinder(r=3.25, h=10, center=true, $fn=16);
+	translate([-15, 13, 2]) cylinder(r=3.25, h=10, center=true, $fn=16);
+	translate([-5, 13, 2]) cylinder(r=3.25, h=10, center=true, $fn=16);
+	translate([-25, 13, 2]) cylinder(r=3.25, h=10, center=true, $fn=16);
 
-	translate([5, 12, 6]) cylinder(r=.75, h=5, center=true, $fn=16);
-	translate([15, 12, 6]) cylinder(r=.75, h=5, center=true, $fn=16);
-	translate([25, 12, 6]) cylinder(r=.75, h=5, center=true, $fn=16);
+	translate([5, 13, 6]) cylinder(r=.8, h=5, center=true, $fn=16);
+	translate([15, 13, 6]) cylinder(r=.8, h=5, center=true, $fn=16);
+	translate([25, 13, 6]) cylinder(r=.8, h=5, center=true, $fn=16);
 
 
 
