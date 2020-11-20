@@ -79,5 +79,38 @@ module holder(){
 	}
 }
 
-tray();
+
+module bnc_sock(){
+	cylinder(r=5.25, h=10, center=true, $fn=32);
+	rotate([0,0,30])cube([2,14,10], center=true);
+}
+
+module bnc_tray(){
+	difference() {
+		color("gray") cube([62, 44, 10], center = true);
+
+		translate([-25, -15, 2]) bnc_sock();
+		translate([-12.5, -15, 2]) bnc_sock();
+		translate([0, -15, 2]) bnc_sock();
+		translate([12.5, -15, 2]) bnc_sock();
+		translate([25, -15, 2]) bnc_sock();
+
+		translate([-25, -2.5, 2]) bnc_sock();
+		translate([-12.5, -2.5, 2]) bnc_sock();
+		translate([0, -2.5, 2]) bnc_sock();
+		translate([12.5, -2.5, 2]) bnc_sock();
+		translate([25, -2.5, 2]) bnc_sock();
+
+		translate([-23, 13, 2]) cylinder(r=7, h=10, center=true, $fn=32);
+		translate([-7.75, 13, 2]) cylinder(r=7, h=10, center=true, $fn=32);
+		translate([7.75, 13, 2]) cylinder(r=7, h=10, center=true, $fn=32);
+		translate([23, 13, 2]) cylinder(r=7, h=10, center=true, $fn=32);
+
+
+	}
+}
+
+
+// tray();
 // holder();
+bnc_tray();
