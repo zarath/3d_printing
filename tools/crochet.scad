@@ -1,4 +1,4 @@
-diameter = 18;
+diameter = 16;
 
 $fn=36;
 height = 28;

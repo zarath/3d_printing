@@ -5,7 +5,7 @@ r1 = 11.5;
 r2 = 10.00;
 h = 60;
 o = 7.5;
-tilt = -35;
+tilt = -15;
 // tilt = 0;
 
 $fn = 60;
@@ -28,16 +28,17 @@ module holder () {
 
 module screw () {
  rotate(90, [1, 0, 0]) {
-   cylinder(r=2.5, h=40, center=true);
-   translate([0, 0, -10]) cylinder(r1=5, r2=2.5, h=2.5, center=true);
-   translate([0, 0, -22.5])cylinder(r=5, h=22.5, center=true);
+   cylinder(r=2.5, h=72, center=true);
+   translate([0, 0, -33.5]) cylinder(r1=5, r2=2.5, h=2.5, center=true);
+   translate([0, 0, -65])cylinder(r=5, h=60, center=true);
  }
 } 
 
 difference () {
-  translate ([-15, -15, -10]) cube([35, 75, 50]);
+  translate ([-15, -65, -5]) cube([30, 95, 50]);
   holder();
-  translate([0, -20, 15])screw();
-  translate([0, -20, 30])screw();
+  translate ([-25, -75, 30]) cube([50, 115, 20]);
+  translate([0, -85, 5])screw();
+  translate([0, -85, 20])screw();
 }
 
