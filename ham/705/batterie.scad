@@ -62,6 +62,17 @@ module snap () {
     }
 }
 
+module edge() {
+    translate([-6, 81, -1]) difference() {
+        cube([12,12,12]);
+        translate([12, 0, -1]) cylinder($fn=32, r=6, h=12);
+    }
+    translate([52, 81, -1]) difference() {
+        cube([12,12,12]);
+        cylinder($fn=32, r=6, h=12);
+    }
+}
+
 module cap () {
     difference() {
         roundedcube([58, 87, 10], radius = 2, apply_to="zmax");
@@ -75,22 +86,46 @@ module cap () {
         translate([4, 45, 3]) rotate([90, 0, 0]) cylinder($fn=32, d=2, h=74, center=true);
         translate([54, 45, 3]) rotate([90, 0, 0]) cylinder($fn=32, d=2, h=74, center=true);
 
-        translate([3.8, -1, -1]) cube([6, 10, 5]);
-        translate([47.7, -1, -1]) cube([6, 10, 5]);
+        translate([6.4, -1, -1]) cube([6, 10, 5]);
+        translate([45.6, -1, -1]) cube([6, 10, 5]);
 
+        translate([6.4, 2, -1]) cube([9, 38, 5]);
+        translate([42.6, 2, -1]) cube([9, 38, 5]);
+
+        translate([16.5, 0.8, -1]) cube([5,6,6]);
+        translate([36.5, 0.8, -1]) cube([5,6,6]);
+
+        for(x=[26.5: 0.2: 31.5]) {
+            translate([x, 15, 6]) cylinder($fn=32, d=5, h=12, center=true);
+        }
+
+        for(y=[9.3: 0.2: 12.3]) {
+            translate([10.8, y, 6]) cylinder($fn=32, d=5, h=12, center=true);
+            translate([47.2, y, 6]) cylinder($fn=32, d=5, h=12, center=true);
+            translate([10.8, y, 13]) sphere($fn=32, d=10);
+            translate([47.2, y, 13]) sphere($fn=32, d=10);
+        }
+        edge();
     }
-    translate([15.5, 23.1, 0]) difference() {
-        cube([28,1.5,5]);
-        translate([14,0,4]) rotate([0, 90, 0]) cylinder($fn=32, d=2, h=28, center=true);
+
+    translate([18.5, 23.1, 0]) difference() {
+        cube([22, 1.5, 5]);
+        translate([14,0,4]) rotate([0, 90, 0]) cylinder($fn=32, d=2, h=22, center=true);
     }
-    translate([15.5, 36.4, 0]) difference() {
-        cube([28,1.5,5]);
-        translate([14,1.5,4]) rotate([0, 90, 0]) cylinder($fn=32, d=2, h=28, center=true);
+    translate([18.5, 36.4, 0]) difference() {
+        cube([22, 1.5, 5]);
+        translate([14,1.5,4]) rotate([0, 90, 0]) cylinder($fn=32, d=2, h=22, center=true);
 
     }
 }
 
-plate1();
-color("red") translate([4.2, 25.6, 5.9]) rotate([180,0,0]) snap();
-translate([-2.25, -6, 6.8]) cap();
+module pin (){
+    translate([0,0,3.3])cylinder($fn=32, d=2.8, h=6.6, center=true);
+    translate([0,0,6.6])sphere($fn=32, d=2.8);
+}
+
+//plate1();
+// color("red") translate([4.2, 25.6, 5.9]) rotate([180,0,0]) snap();
+// %translate([-2.25, -6, 1.8]) cap();
 // cap ();
+pin ();
