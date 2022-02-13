@@ -120,12 +120,23 @@ module cap () {
 }
 
 module pin (){
-    translate([0,0,3.3])cylinder($fn=32, d=2.8, h=6.6, center=true);
-    translate([0,0,6.6])sphere($fn=32, d=2.8);
+    translate([0,0,4.3])cylinder($fn=32, d=2.8, h=8.6, center=true);
+    translate([0,0,8.6])sphere($fn=32, d=2.8);
 }
 
-//plate1();
-// color("red") translate([4.2, 25.6, 5.9]) rotate([180,0,0]) snap();
-// %translate([-2.25, -6, 1.8]) cap();
+module pin_cap (){
+    difference() {
+        cylinder($fn=32, d=4.8, h=5);
+        translate([0,0,-2])cylinder($fn=32, d=3, h=5);
+    }
+}
+
+plate1();
+color("red") translate([4.2, 25.6, 5.9]) rotate([180,0,0]) snap();
+color("red") translate([8.6, 4.1, 2]) pin();
+color("red") translate([45, 4.1, 2]) pin();
+translate([-2.25, -6, 1.8]) cap();
 // cap ();
-pin ();
+// pin ();
+// pin_cap ();
+
