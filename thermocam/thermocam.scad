@@ -1,4 +1,4 @@
-use<threads.scad>
+// use<threads.scad>
 $fn= 16;
 
 module main_box() {
@@ -84,7 +84,6 @@ module bottom_plate(){
         // thread
         //translate([15,-3,8])rotate([270,0,0])english_thread(diameter=1/4, threads_per_inch=20, length=5/16);
         translate([15,-3,8])rotate([270,0,0])cylinder(h=8, r=1.6);
-        translate([15,1,8])rotate([270,0,0])cylinder($fn=6, h=6, r=3.3);
     };
 };
 
@@ -100,8 +99,131 @@ module front_plate(){
 };
 
 
-main_box();
+module edge(r, h, dir){
+    rotate([0, 0, dir])
+    difference() {
+     cube([r, r, h]);
+     translate([0, 0, -1])cylinder(r=r, h=h+2);
+    }
+}
 
-translate([0, -3, 0])bottom_plate();
+module front_plate2(){
+    // it is 38.0 x 84.5
+    difference() {
+        cube([38.0, 84.5, 25.0]);
+        translate([6, 4, 3])cube([26.0, 26.0, 25.0]);
+        translate([3.5, 4, 12])cube([31.0, 26.0, 25.0]);
+        translate([3.5, 12.5, 3])cube([10.0, 9.0, 25.0]);
 
-translate([1, 1, 26])front_plate();
+        // 5mm behind 16mm-2.5 23.8mm-2.5
+        translate([3.5, 31, 6])cube([25.0, 25.5, 25.0]);
+        translate([4.5, 32.5, 4])cube([30.0, 22.5, 25.0]);
+        translate([4.5, 43.75 - 5.0, 2])cube([30.0, 10, 25.0]);
+        translate([12.95, 43.75, -1])cylinder(d1=12, d2=4, h=4);
+        translate([12.95 - 6.75, 43.75 - 10.65, -1])cylinder(d=2.7, h=27.0);
+        translate([12.95 - 6.75, 43.75 - 10.65, -1])cylinder(d=5.0, h=3.0);
+        translate([12.95 - 6.75, 43.75 - 10.65, 6])cylinder($fn=6, r=3.0, h=27.0);
+        translate([12.95 + 6.75, 43.75 - 10.65, -1])cylinder(d=2.7, h=27.0);
+        translate([12.95 + 6.75, 43.75 - 10.65, -1])cylinder(d=5.0, h=3.0);
+        translate([12.95 + 6.75, 43.75 - 10.65, 6])cylinder($fn=6, r=3.0, h=27.0);
+        translate([12.95 - 6.75, 43.75 + 10.65, -1])cylinder(d=2.7, h=27.0);
+        translate([12.95 - 6.75, 43.75 + 10.65, -1])cylinder(d=5.0, h=3.0);
+        translate([12.95 - 6.75, 43.75 + 10.65, 6])cylinder($fn=6, r=3.0, h=27.0);
+        translate([12.95 + 6.75, 43.75 + 10.65, -1])cylinder(d=2.7, h=27.0);
+        translate([12.95 + 6.75, 43.75 + 10.65, -1])cylinder(d=5.0, h=3.0);
+        translate([12.95 + 6.75, 43.75 + 10.65, 6])cylinder($fn=6, r=3.0, h=27.0);
+
+
+        // 16 behind
+        translate([2.5, 57.5, 16])cube([20.0, 23.0, 25.0]);
+        translate([4.5, 57.5, 13])cube([16.0, 23.0, 25.0]);
+        translate([12.5, 57.7 + 5.8, -1])cylinder($fn=32, r=4.9, h=27.0);
+        translate([12.5, 57.7 + 5.8, 3])cylinder($fn=32, r=5.3, h=27.0);
+        translate([12.5 - 6.8, 57.7 + 2.7, -1])cylinder(d=2.7, h=27.0);
+        translate([12.5 + 6.8, 57.7 + 2.7, -1])cylinder(d=2.7, h=27.0);
+        translate([12.5 - 6.8, 57.7 + 2.7, -1])cylinder(d=5.0, h=3.0);
+        translate([12.5 + 6.8, 57.7 + 2.7, -1])cylinder(d=5.0, h=3.0);
+
+        // 17 behind
+        translate([3, 3, 17])cube([32.0, 78.5, 25.0]);
+        translate([3, 3, -1])cylinder(d=2.7, h=27.0);
+        translate([3, 3, -1])cylinder(d=5, h=3.0);
+        translate([35, 3, -1])cylinder(d=2.7, h=27.0);
+        translate([35, 3, -1])cylinder(d=5, h=3.0);
+        translate([3, 81.5, -1])cylinder(d=2.7, h=27.0);
+        translate([3, 81.5, -1])cylinder(d=5, h=3.0);
+        translate([35, 81.5, -1])cylinder(d=2.7, h=27.0);
+        translate([35, 81.5, -1])cylinder(d=5, h=3.0);
+
+        translate([3, 3, -1])edge(3.0, 27, 180);
+        translate([35, 3, -1])edge(3.0, 27, 270);
+        translate([3, 81.5, -1])edge(3.0, 27, 90);
+        translate([35, 81.5 , -1])edge(3.0, 27, 0);
+
+    }
+}
+
+module mounting_plate(){
+    difference() {
+        union() {
+          cube([76.0, 100.0, 3.0]);
+          translate([15, 5, 0]){
+            translate([3.1, 3.1, 0]) cube([38.0-3.1 *2 , 84.5-3.1* 2, 5.0]);
+          }
+          translate([56, 7.25, 0]) cube([20, 80, 10]);
+        }
+        translate([-5, 70, -1]) cube([15, 50, 5]);
+        translate([15, 5, 0]){
+            translate([5.1, 5.1, -1]) cube([38.0-5.1 *2 , 35.15, 25.0]);
+            translate([5.1, 35.15 + 4 + 5.1, -1]) cube([38.0-5.1 *2 , 35.15, 25.0]);
+            translate([3, 3, -1])cylinder(d=2.7, h=27.0);
+            translate([3, 3, -1])rotate([0,0,90])cylinder($fn=6, r=3, h=3.0);
+            translate([35, 3, -1])cylinder(d=2.7, h=27.0);
+            translate([35, 3, -1])rotate([0,0,90])cylinder($fn=6, r=3, h=3.0);
+            translate([3, 81.5, -1])cylinder(d=2.7, h=27.0);
+            translate([3, 81.5, -1])rotate([0,0,90])cylinder($fn=6, r=3, h=3.0);
+            translate([35, 81.5, -1])cylinder(d=2.7, h=27.0);
+            translate([35, 81.5, -1])rotate([0,0,90])cylinder($fn=6, r=3, h=3.0);
+        }
+        translate([56+9.3, 12, 11.3])rotate([-90,0,0])cylinder($fn=32,d=18.6,h=70);
+        translate([56+6.5, 12, -1]) cylinder(d=5,h=27);
+        translate([56+7.9, 12.75, 2.6]) cylinder(d=5,h=27);
+        translate([56+9.9, 13, 2.4]) cylinder(d=5,h=27);
+        translate([56+9.3, 82, -1]) cylinder(d=5,h=27);
+        translate([56+2, 7, 5])rotate([0,90,0]) cylinder(d=2,h=16);
+        translate([56+2, 87, 5])rotate([0,90,0]) cylinder(d=2,h=16);
+
+        translate([15, 10, 0]){
+            translate([3.5, 3.5, -1])cylinder(d=2.7, h=27.0);
+            translate([3.5, 3.5, 1])cylinder(d=5, h=27.0);
+            translate([3.5 + 49, 3.5, -1])cylinder(d=2.7, h=27.0);
+            translate([3.5 + 49, 3.5,1])cylinder(d=5, h=27.0);
+            translate([3.5, 3.5 + 58, -1])cylinder(d=2.7, h=27.0);
+            translate([3.5, 3.5 + 58, 1])cylinder(d=5, h=27.0);
+            translate([3.5 + 49, 3.5 + 58, -1])cylinder(d=2.7, h=27.0);
+            translate([3.5 + 49, 3.5 + 58, 1])cylinder(d=5, h=27.0);
+        }
+
+        translate([3,3,-1])cylinder(d=2.7, h=27.0);
+        translate([3,3,1])cylinder(d=5, h=27.0);
+        translate([76-3,3,-1])cylinder(d=2.7, h=27.0);
+        translate([76-3,3,1])cylinder(d=5, h=27.0);
+        translate([13,100-3,-1])cylinder(d=2.7, h=27.0);
+        translate([13,100-3,1])cylinder(d=5, h=27.0);
+        translate([76-3,100-3,-1])cylinder(d=2.7, h=27.0);
+        translate([76-3,100-3,1])cylinder(d=5, h=27.0);
+        translate([3,70-3,-1])cylinder(d=2.7, h=27.0);
+        translate([3,70-3,1])cylinder(d=5, h=27.0);
+
+
+    }
+}
+
+// translate ([53, 5, 35]) rotate([0, 180, 0]) front_plate2();
+mounting_plate();
+
+// main_box();
+
+// translate([0, -3, 0])bottom_plate();
+
+// translate([1, 1, 26])front_plate();
