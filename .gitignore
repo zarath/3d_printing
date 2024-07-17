@@ -1,2 +1,5 @@
 *.stl
+**.STL
+**.STEP
+*.pdf
 *.gcode

@@ -20,7 +20,7 @@ module case() {
                 cylinder(h = 4.0, r = 2.0);
             };
         }
-        translate([-26.0, -18.0, 2.0]) cube([52.0, 36.0, 30.0]);
+        translate([-26.5, -18.5, 2.0]) cube([53.0, 37.0, 30.0]);
 
         translate([-26.0, 0.0, 30.0 - 11.0]) rotate([90.0, 0.0, 90.0]) usb_hole(); 
 
@@ -33,10 +33,10 @@ module case() {
     }
     difference() {
         union() {
-            translate([bolt_delta_x / 2.0, bolt_delta_y / 2.0, 2.0]) cylinder(h = 21.0, d = bolt_diameter);
-            translate([-bolt_delta_x / 2.0, bolt_delta_y / 2.0, 2.0]) cylinder(h = 21.0, d = bolt_diameter);
-            translate([bolt_delta_x / 2.0, -bolt_delta_y / 2.0, 2.0]) cylinder(h = 21.0, d = bolt_diameter);
-            translate([-bolt_delta_x / 2.0, -bolt_delta_y / 2.0, 2.0]) cylinder(h = 21.0, d = bolt_diameter);
+            translate([bolt_delta_x / 2.0, bolt_delta_y / 2.0, 2.0]) cylinder(h = 21.5, d = bolt_diameter);
+            translate([-bolt_delta_x / 2.0, bolt_delta_y / 2.0, 2.0]) cylinder(h = 21.5, d = bolt_diameter);
+            translate([bolt_delta_x / 2.0, -bolt_delta_y / 2.0, 2.0]) cylinder(h = 21.5, d = bolt_diameter);
+            translate([-bolt_delta_x / 2.0, -bolt_delta_y / 2.0, 2.0]) cylinder(h = 21.5, d = bolt_diameter);
         };
         translate([bolt_delta_x / 2.0, bolt_delta_y / 2.0, 1.0]) cylinder(h = 23.0, d = 2.8);
         translate([-bolt_delta_x / 2.0, bolt_delta_y / 2.0, 1.0]) cylinder(h = 23.0, d = 2.8);
