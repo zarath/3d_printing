@@ -1,5 +1,5 @@
 *.stl
-**.STL
-**.STEP
+*.STL
+*.STEP
 *.pdf
 *.gcode
